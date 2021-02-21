@@ -23,7 +23,6 @@ const App = () => {
           <Route path="/shoppinglist" component={Shopping} />{" "}
           <Route path="/plannedexpenses" component={PlannedExpenses} />
           <Route path="/expenses" component={Expenses} />
-          <Route path="/calendar" component={BigCalendar} />
           <Route component={NotFound} />
         </Switch>
       </Router>
