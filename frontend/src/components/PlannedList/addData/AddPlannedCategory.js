@@ -1,41 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/macro";
-import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useForm } from "react-hook-form";
 import { useAlert } from "react-alert";
-import { useCollection } from "react-firebase-hooks/firestore";
 
-import firebase from "../../../config/firebase";
 import { addPlannedCategory } from "../../../utils/firebase/firebaseFunctions";
 
 const AddPlannedCategory = () => {
   const alert = useAlert();
-  const [value, onChange] = useState(new Date());
-  const [dates, setDates] = useState(new Date());
   const { register, handleSubmit, reset } = useForm();
 
   const handleAddPlannedCategory = (data) => {
-    alert.show(`Dodano ${data.transaction}`);
-    const created = dates.getFullYear();
-    addPlannedCategory(data.transaction, created);
+    alert.show(`Dodano ${data.plannedCategory}`);
+    addPlannedCategory(data.plannedCategory, parseInt(data.year));
     reset();
   };
-  const onClickYear = (date) => {
-    setDates(date);
-  };
+
   return (
     <AddPlannedCategoryContainer>
-      Dodaj transakcje
-      <Calendar value={value} onClickYear={onClickYear} />
+      Dodaj Kategorie
       <Form onSubmit={handleSubmit(handleAddPlannedCategory)}>
         <Input
-          type="text"
-          placeholder="Nazwa"
-          name="transaction"
+          type="number"
+          placeholder="Rok"
+          name="year"
           ref={register({ required: true, min: 1 })}
         />
-
+        <Input
+          type="text"
+          placeholder="Nazwa Kategorii"
+          name="plannedCategory"
+          ref={register({ required: true, min: 1 })}
+        />
         <ButtonSubmit type="submit" value="+" />
       </Form>
     </AddPlannedCategoryContainer>
@@ -72,14 +68,7 @@ const Input = styled.input`
   border: 2px solid rgb(22, 38, 51);
 `;
 
-const Select = styled.select`
-  width: 100%;
 
-  margin: 5px;
-  padding: 5px;
-
-  border: 2px solid rgb(22, 38, 51);
-`;
 
 const ButtonSubmit = styled.input`
   width: 80%;

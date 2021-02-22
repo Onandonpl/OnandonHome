@@ -5,9 +5,9 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import firebase from "../../config/firebase";
 
 import AddPlannedCategory from "./addData/AddPlannedCategory";
-import RenderPlannedYear from "./renderYear/RenderPlannedYear";
+import CategoriesYear from "./renderYear/CategoriesYear";
 
-const ExpensesList = () => {
+const PlannedList = () => {
   const [value, loading] = useCollection(
     firebase
       .firestore()
@@ -17,30 +17,23 @@ const ExpensesList = () => {
 
   if (loading) return <div>ladowanie</div>;
 
-  const plannedData = value.docs
+  const categories = value.docs
     .map((doc) => doc)
-    .map((value) => ({ plannedYear: value.data(), id: value.id }));
+    .map((value) => ({ categoryData: value.data(), categoryId: value.id }));
 
   return (
     <Expenses>
       <AddPlannedCategory />
-      <RenderPlannedYear plannedData={plannedData} />
+      <CategoriesYear categories={categories} />
     </Expenses>
   );
 };
 
-export default ExpensesList;
+export default PlannedList;
 
 const Expenses = styled.div`
   min-height: 100vh;
   width: 100%;
   padding: 5px;
   background-color: #ffff;
-`;
-
-const Head = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
 `;

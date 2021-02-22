@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 import {
   AiOutlineHome,
   AiOutlineShoppingCart,
-  AiOutlineCalendar,
 } from "react-icons/ai";
 import { BiMoney } from "react-icons/bi";
 import { FiSun } from "react-icons/fi";
@@ -28,10 +27,7 @@ const Menu = ({ open, setOpen }) => {
         <BiMoney />
         <LinktText>Wydatki</LinktText>
       </NavLink>
-      <NavLink to="/calendar">
-        <AiOutlineCalendar />
-        <LinktText>Kalendarz</LinktText>
-      </NavLink>
+
       <NavLink to="/weather">
         <FiSun />
         <LinktText>Pogoda</LinktText>

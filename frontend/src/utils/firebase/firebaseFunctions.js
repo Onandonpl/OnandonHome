@@ -128,47 +128,44 @@ const addCategory = (categoryName, categoryType, color) => {
   });
 };
 ///////////////
-const addDsevice = (id, name, friendlyname, type) => {
-  firestore.collection("rooms").doc(id).collection("devices").add({
-    name,
-    friendlyname,
-    type,
-    created: firebase.firestore.FieldValue.serverTimestamp(),
-  });
-};
-const addPlannedYear = (id, year) => {
+const addPlannedExpense = (
+  added,
+  categoryId,
+  monthId,
+  plannedExpenseName,
+  amount,
+  created,
+  time
+) => {
   firestore
     .collection("plannedCategories")
-    .doc(id)
+    .doc(categoryId)
     .collection("expenses")
     .add({
-      year,
-      months: [
-        { year: year, month: "Styczeń", id: 1, expenses: [] },
-        { year: year, month: "Luty", id: 2, expenses: [] },
-        { year: year, month: "Marzec", id: 3, expenses: [] },
-        { year: year, month: "Kwiecień", id: 4, expenses: [] },
-        { year: year, month: "Maj", id: 5, expenses: [] },
-        { year: year, month: "Czerwiec", id: 6, expenses: [] },
-        { year: year, month: "Lipiec", id: 7, expenses: [] },
-        { year: year, month: "Sierpień", id: 8, expenses: [] },
-        { year: year, month: "Wrzesień", id: 9, expenses: [] },
-        { year: year, month: "Październik", id: 10, expenses: [] },
-        { year: year, month: "Listopad", id: 11, expenses: [] },
-        { year: year, month: "Grudzień", id: 12, expenses: [] },
-      ],
+      added,
+      monthId,
+      plannedExpenseName,
+      type: "expense",
+      mainCategory: "Planowane",
+      subCategory: "Planowane",
+      amount,
+      created,
+      time,
     });
 };
-const addPlannedCategory = (categoryName, created) => {
+const updatePlannedStatus = (categoryId, expenseId, added) => {
   firestore
     .collection("plannedCategories")
-    .add({
-      categoryName,
-      created,
-    })
-    .then((docRef) => {
-      addPlannedYear(docRef.id, created);
-    });
+    .doc(categoryId)
+    .collection("expenses")
+    .doc(expenseId)
+    .update({ added: added });
+};
+const addPlannedCategory = (categoryName, created) => {
+  firestore.collection("plannedCategories").add({
+    categoryName,
+    created,
+  });
 };
 
 export {
@@ -193,5 +190,6 @@ export {
   updateTransactionSubCategory,
   addCategory,
   addPlannedCategory,
-  addPlannedYear,
+  addPlannedExpense,
+  updatePlannedStatus,
 };
