@@ -9,7 +9,6 @@ import NotFound from "./pages/NotFound";
 import Weather from "./pages/Weather";
 import Shopping from "./pages/Shopping";
 import Expenses from "./pages/Expenses";
-import BigCalendar from "./pages/BigCalendar";
 import PlannedExpenses from "./pages/PlannedExpenses";
 
 const App = () => {
