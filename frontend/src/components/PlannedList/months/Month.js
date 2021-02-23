@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import "react-calendar/dist/Calendar.css";
+import Popup from "reactjs-popup";
+import { AiOutlineCalendar, AiOutlinePlusCircle } from "react-icons/ai";
 
 import PlannedExpense from "../PlannedExpense/PlannedExpense";
 import PlannedExpenseAdd from "./PlannedExpenseAdd";
@@ -8,7 +10,16 @@ import PlannedExpenseAdd from "./PlannedExpenseAdd";
 const Month = ({ categoryId, monthId, monthName, expenses }) => {
   return (
     <MonthContainer>
-      <PlannedExpenseAdd categoryId={categoryId} monthId={monthId} />
+      <Popup
+        trigger={
+          <TriggerButton>
+            <AiOutlinePlusCircle />
+          </TriggerButton>
+        }
+        modal
+      >
+        <PlannedExpenseAdd categoryId={categoryId} monthId={monthId} />
+      </Popup>
       {expenses.map((expense) => (
         <PlannedExpense
           key={expense.monthId}
@@ -25,9 +36,10 @@ export default Month;
 
 const MonthContainer = styled.div`
   display: flex;
-  margin: 5px;
-  height: 550px;
-  width: 550px;
+  flex-wrap: wrap;
+  margin: 1px;
+  height: 50px;
+  width: 150px;
   background-color: red;
 `;
 
@@ -59,4 +71,21 @@ const ButtonSubmit = styled.input`
   color: white;
   font-size: 24px;
   cursor: pointer;
+`;
+const TriggerButton = styled.button`
+  width: 15px;
+  height: 15px;
+  margin-right: 15px;
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  transition: linear 0.1s;
+
+  &:hover {
+    scale: 1.1;
+  }
+  &:focus {
+    scale: 1.1;
+  }
 `;
