@@ -167,7 +167,9 @@ const addPlannedCategory = (categoryName, created) => {
     created,
   });
 };
-
+const deleteCategory = (id) => {
+  firestore.collection("plannedCategories").doc(id).delete();
+};
 export {
   addRoom,
   deleteRoom,
@@ -192,4 +194,5 @@ export {
   addPlannedCategory,
   addPlannedExpense,
   updatePlannedStatus,
+  deleteCategory,
 };
