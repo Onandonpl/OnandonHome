@@ -1,30 +1,25 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 
 import Category from "./Category";
 
 const CategoriesYear = ({ categories }) => {
-  const [value, onChange] = useState(new Date());
+  const [date, setDate] = useState(new Date().getFullYear());
   const [categoriesByYear, setCategoriesByYear] = useState([]);
-
+  
   useEffect(() => {
-    const convertedDate = value.getFullYear();
-
     const filtered = categories.filter((value) => {
-      if (value.categoryData.created === convertedDate) {
+      if (value.categoryData.created === date) {
         return value;
       }
     });
     setCategoriesByYear(filtered);
   }, [categories]);
 
-  const onClickYear = (date) => {
-    const convertedDate = date.getFullYear();
-
+  const handleYearChange = (event) => {
+    setDate(parseInt(event.target.value));
     const filtered = categories.filter((value) => {
-      if (value.categoryData.created === convertedDate) {
+      if (value.categoryData.created === parseInt(event.target.value)) {
         return value;
       }
     });
@@ -33,11 +28,10 @@ const CategoriesYear = ({ categories }) => {
 
   return (
     <div>
-      <Calendar
-        value={value}
-        onClickYear={onClickYear}
-        defaultView={"decade"}
-      />
+      <form>
+        <input type="number" value={date} onChange={handleYearChange} />
+      </form>
+
       {categoriesByYear.map((value) => (
         <Category
           key={value.categoryId}
