@@ -14,7 +14,7 @@ const ProductFlags = ({ handleFlag, isChecked, listColor }) => {
       </CheckboxContainer>
       <CheckboxContainer
         onClick={() => {
-          handleFlag("red");
+          handleFlag("#f1526d");
         }}
       >
         <HiddenCheckbox defaultChecked={isChecked} />
@@ -27,7 +27,7 @@ const ProductFlags = ({ handleFlag, isChecked, listColor }) => {
       >
         <HiddenCheckbox defaultChecked={isChecked} />
         <StyledCheckboxTwo checked={isChecked} />
-      </CheckboxContainer>{" "}
+      </CheckboxContainer>
       <CheckboxContainer
         onClick={() => {
           handleFlag("green");
@@ -35,7 +35,7 @@ const ProductFlags = ({ handleFlag, isChecked, listColor }) => {
       >
         <HiddenCheckbox defaultChecked={isChecked} />
         <StyledCheckboxThree checked={isChecked} />
-      </CheckboxContainer>{" "}
+      </CheckboxContainer>
       <CheckboxContainer
         onClick={() => {
           handleFlag("lightblue");
@@ -53,6 +53,7 @@ const Flags = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5px;
 `;
 const CheckboxContainer = styled.div`
   display: flex;
@@ -90,7 +91,7 @@ const StyledCheckboxOne = styled.div`
   width: 10px;
   height: 10px;
 
-  background: red;
+  background: #f1526d;
   border: 1px solid rgba(0, 0, 0, 0.3);
 
   border-radius: 3px;
