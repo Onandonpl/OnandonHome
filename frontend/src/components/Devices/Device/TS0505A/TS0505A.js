@@ -20,7 +20,7 @@ import {
   slide_up,
   slide_out_left,
 } from "../../../../utils/styledComponents/animations";
-import LoadingDevice from "../../../Animations/LoadingDevice";
+import LoadingDevice from "../../../Styled/LoadingDevice";
 
 import TS0505ANotExist from "./TS0505ANotExist";
 import ColorPicker from "./ColorPicker";
