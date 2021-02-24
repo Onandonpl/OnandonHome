@@ -20,7 +20,7 @@ const BalanceChart = ({ expense, income }) => {
         data={data}
         options={{
           legend: {
-            display: false,
+            display: true,
           },
         }}
       />
@@ -29,6 +29,4 @@ const BalanceChart = ({ expense, income }) => {
 };
 
 export default BalanceChart;
-const Chart = styled.div`
-
-`;
+const Chart = styled.div``;
