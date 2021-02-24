@@ -21,7 +21,7 @@ import {
   slide_up,
   slide_out_left,
 } from "../../../../utils/styledComponents/animations";
-import LoadingDevice from "../../../Animations/LoadingDevice";
+import LoadingDevice from "../../../Styled/LoadingDevice";
 
 import Thermometer from "./Thermometer";
 import Humidity from "./Humidity";
