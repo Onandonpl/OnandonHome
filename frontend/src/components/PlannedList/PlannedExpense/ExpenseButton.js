@@ -42,5 +42,6 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   margin-left: 5px;
+  font-size: 20px;
   color: #2ea449;
 `;
