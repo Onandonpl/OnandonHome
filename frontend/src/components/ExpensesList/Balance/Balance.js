@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-
 const Balance = ({ transactionData }) => {
   const balance =
     transactionData.length !== 0
