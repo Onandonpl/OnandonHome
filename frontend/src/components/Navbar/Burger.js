@@ -13,7 +13,7 @@ const Burger = ({ open, setOpen }) => {
 export default Burger;
 
 const StyledBurger = styled.button`
-  position: fixed;
+  position: ${({ open }) => (open ? "fixed" : "absolute")};
   top: 8px;
   left: 10px;
   z-index: 101;
