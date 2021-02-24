@@ -3,35 +3,37 @@ import styled from "styled-components/macro";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 import firebase from "../../config/firebase";
-import Loading from "../Animations/Loading";
 
 import List from "./List";
-import ListAdd from "./ListAdd";
+import AddList from "./AddList";
+import LoadingPage from "../Styled/LoadingPage";
 
 const ShoppingList = () => {
   const [value, loading] = useCollection(
     firebase.firestore().collection("shopping").orderBy("created", "asc")
   );
 
-  if (loading) return <Loading />;
+  if (loading) return <LoadingPage />;
+
+  const formattedLists = value.docs
+    .map((doc) => doc)
+    .map((value) => ({ listData: value.data(), listId: value.id }));
+
   return (
-    <ShoppingListContainer>
-      <ListAdd />
-      {value.docs.map((doc) => (
-        <List key={doc.id} doc={doc}></List>
+    <Container>
+      <AddList />
+      {formattedLists.map((list) => (
+        <List key={list.listId} listData={list}></List>
       ))}
-    </ShoppingListContainer>
+    </Container>
   );
 };
 
 export default ShoppingList;
-const ShoppingListContainer = styled.div`
-  height: 100%;
-  padding: 20px;
 
+const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex: 1;
 `;
