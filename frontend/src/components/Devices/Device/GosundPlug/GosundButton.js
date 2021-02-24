@@ -1,19 +1,18 @@
 import React from "react";
 import styled from "styled-components/macro";
-import client from "../../../../config/mqttConnect";
+// import client from "../../../../config/mqttConnect";
 
 const GosundButton = ({ power, name }) => {
-
-  const handleGosundButton = () => {
-    power === "OFF"
-      ? client.publish(`tasmota/gosundPlug/cmnd/${name}/POWER`, "ON")
-      : client.publish(`tasmota/gosundPlug/cmnd/${name}/POWER`, "OFF");
-  };
+  // const handleGosundButton = () => {
+  //   power === "OFF"
+  //     ? client.publish(`tasmota/gosundPlug/cmnd/${name}/POWER`, "ON")
+  //     : client.publish(`tasmota/gosundPlug/cmnd/${name}/POWER`, "OFF");
+  // };
 
   return (
     <GosundButtonContainer
       state={power}
-      onClick={handleGosundButton}
+      // onClick={handleGosundButton}
     ></GosundButtonContainer>
   );
 };

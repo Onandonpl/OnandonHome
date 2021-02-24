@@ -21,7 +21,7 @@ import {
   slide_up,
   slide_out_left,
 } from "../../../../utils/styledComponents/animations";
-import LoadingDevice from "../../../Animations/LoadingDevice";
+import LoadingDevice from "../../../Styled/LoadingDevice";
 
 import GosundButton from "./GosundButton";
 import GosundBasicInfo from "./GosundBasicInfo";
@@ -51,8 +51,8 @@ const GosundPlug = ({ type, deviceId, roomId, devicename, friendlyname }) => {
   const { name, power, deviceSensor, state } = value.val();
 
   const handleUpdateDeviceName = (value) => {
-    alert.show(`Zaaktualizowano ${friendlyname}`);
     updateDeviceName(roomId, deviceId, value);
+    alert.show(`Zaaktualizowano ${friendlyname}`);
   };
 
   return (

@@ -44,7 +44,7 @@ const GosundBasic = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  font-size: 10px;
+  font-size: 9px;
 `;
 
 const SingleInfo = styled.div`
