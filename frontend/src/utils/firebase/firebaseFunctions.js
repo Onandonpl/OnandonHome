@@ -161,6 +161,16 @@ const updatePlannedStatus = (categoryId, expenseId, added) => {
     .doc(expenseId)
     .update({ added: added });
 };
+const updatePlannedAmount = (categoryId, expenseId, amount) => {
+  firestore
+    .collection("plannedCategories")
+    .doc(categoryId)
+    .collection("expenses")
+    .doc(expenseId)
+    .update({
+      amount,
+    });
+};
 const addPlannedCategory = (categoryName, created) => {
   firestore.collection("plannedCategories").add({
     categoryName,
@@ -195,4 +205,5 @@ export {
   addPlannedExpense,
   updatePlannedStatus,
   deleteCategory,
+  updatePlannedAmount,
 };
