@@ -12,15 +12,20 @@ const CC2531 = () => {
   const { friendly_name, model } = value.val().message.meta;
   return (
     <CC2531Container>
-      {model}:{friendly_name}
+      <p>Ostatnio zarejestrowane urządzenie</p>
+      <p>Model urządzenia: {model}</p> <p>Nazwa urządzenia: {friendly_name}</p>
     </CC2531Container>
   );
 };
 
 export default CC2531;
 const CC2531Container = styled.div`
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  z-index: 301;
+  top: 5px;
+
+  p {
+    color: white;
+    font-size: 10px;
+  }
 `;
