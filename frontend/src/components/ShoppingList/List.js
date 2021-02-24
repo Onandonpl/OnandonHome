@@ -9,18 +9,18 @@ import {
   slide_up,
   slide_out_left,
 } from "../../utils/styledComponents/animations";
-import ProductList from "./Product/ProductList";
+import ProductList from "./Product/ProducstList";
 import ProductAdd from "./Product/ProductAdd";
 
-const List = ({ doc }) => {
+const List = ({ listData }) => {
   const alert = useAlert();
   const [fadeOut, setFadeOut] = useState(true);
 
-  const { listColor, listName } = doc.data();
-  const listId = doc.id;
+  const { listColor, listName } = listData.listData;
+  const listId = listData.listId;
 
   const handleDeleteList = () => {
-    alert.show("Usunięto liste");
+    alert.show(`Usunięto ${listName}`);
     setFadeOut(!fadeOut);
 
     const timer = setTimeout(() => {
@@ -30,7 +30,7 @@ const List = ({ doc }) => {
   };
 
   return (
-    <ListContainer props={fadeOut}>
+    <Container props={fadeOut}>
       {listName}
       <ProductAdd listColor={listColor} listId={listId} />
       <ProductList listColor={listColor} listId={listId} />
@@ -38,21 +38,21 @@ const List = ({ doc }) => {
       <DeleteButton onClick={handleDeleteList}>
         <AiFillDelete />
       </DeleteButton>
-    </ListContainer>
+    </Container>
   );
 };
 
 export default List;
 
-const ListContainer = styled.div`
+const Container = styled.div`
   position: relative;
   min-height: 320px;
   min-width: 300px;
   max-width: 1100px;
   width: 100%;
 
-  padding: 10px;
-  margin: 10px;
+  padding: 10px 0;
+  margin: 10px 0;
   overflow: hidden;
 
   display: flex;
