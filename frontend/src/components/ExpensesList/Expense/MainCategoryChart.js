@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 
 const MainCategoryChart = ({ filteredByType, categories }) => {
   const filteredByCategory = categories.docs.map((value) => value);
-  
+
   const filtered = filteredByCategory.filter((value) => {
     console.log(value.data());
     return value.data().categoryType === "mainCategory" ? value.data : null;
@@ -60,6 +60,7 @@ const MainCategoryChart = ({ filteredByType, categories }) => {
           },
           ticks: {
             fontColor: "#000000",
+            stepSize: 500,
           },
           gridLines: {
             color: "#000000",
