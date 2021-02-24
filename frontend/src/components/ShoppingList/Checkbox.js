@@ -16,6 +16,7 @@ const CheckboxContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
