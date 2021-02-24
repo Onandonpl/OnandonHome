@@ -14,24 +14,9 @@ const WeatherData = () => {
     }
   );
 
-  if (loading) {
-    return (
-      <WeatherContainer>
-        <Loading />
-      </WeatherContainer>
-    );
-  }
+  if (loading) return <Loading />;
+
   return <WeatherRender positionData={value.data()} />;
 };
 
 export default WeatherData;
-const WeatherContainer = styled.div`
-  min-height: 100vh;
-
-  background-color: rgb(63, 66, 75);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;

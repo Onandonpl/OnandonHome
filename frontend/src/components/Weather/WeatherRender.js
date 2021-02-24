@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import { useAlert } from "react-alert";
 
-import Loading from "../Animations/Loading";
+import LoadingPage from "../Styled/LoadingPage";
 import WeatherDaily from "./WeatherDaily";
 import WeatherHourly from "./WeatherHourly";
 
@@ -25,30 +25,23 @@ const WeatherRender = ({ positionData }) => {
     return fetchWeather();
   }, [alert, positionData.latitude, positionData.longitude]);
 
-  if (!weatherData) {
-    return <Loading />;
-  }
+  if (!weatherData) return <LoadingPage />;
 
   return (
-    <WeatherContainer>
+    <Container>
       <WeatherHourly weatherData={weatherData.hourly}></WeatherHourly>
       <DailyList>
         {weatherData.daily.map((daily) => (
           <WeatherDaily key={daily.dt} weatherData={daily} />
         ))}
       </DailyList>
-    </WeatherContainer>
+    </Container>
   );
 };
 
 export default WeatherRender;
 
-const WeatherContainer = styled.div`
-  min-height: 100vh;
-  width: 100%;
-
-  background-color: rgb(63, 66, 75);
-
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
