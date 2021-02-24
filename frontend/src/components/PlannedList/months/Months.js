@@ -4,13 +4,9 @@ import Month from "./Month";
 
 const Months = ({ monthsData, categoryId }) => {
   const renderMonthDataById = (id) => {
-    return monthsData.filter((value) => {
-      if (value.monthData.monthId === id) {
-        return value;
-      }
-      return false;
-    });
+    return monthsData.filter((value) => value.monthData.monthId === id);
   };
+
   return (
     <Container>
       <Month
@@ -90,6 +86,11 @@ const Months = ({ monthsData, categoryId }) => {
 };
 
 export default Months;
+
 const Container = styled.div`
+  width: 100%;
+  margin: 5px 0;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `;

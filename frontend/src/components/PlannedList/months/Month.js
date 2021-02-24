@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components/macro";
 import "react-calendar/dist/Calendar.css";
 import Popup from "reactjs-popup";
-import { AiOutlineCalendar, AiOutlinePlusCircle } from "react-icons/ai";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 import PlannedExpense from "../PlannedExpense/PlannedExpense";
-import PlannedExpenseAdd from "./PlannedExpenseAdd";
+import AddPlannedExpense from "./AddPlannedExpense";
 
 const Month = ({ categoryId, monthId, monthName, expenses }) => {
   return (
@@ -18,16 +18,19 @@ const Month = ({ categoryId, monthId, monthName, expenses }) => {
         }
         modal
       >
-        <PlannedExpenseAdd categoryId={categoryId} monthId={monthId} />
+        <AddPlannedExpense categoryId={categoryId} monthId={monthId} />
       </Popup>
-      {expenses.map((expense) => (
-        <PlannedExpense
-          key={expense.monthId}
-          categoryId={categoryId}
-          expenseId={expense.monthId}
-          expenseData={expense.monthData}
-        />
-      ))}
+      <div>
+        <MonthName>{monthName}</MonthName>
+        {expenses.map((expense) => (
+          <PlannedExpense
+            key={expense.monthId}
+            categoryId={categoryId}
+            expenseId={expense.monthId}
+            expenseData={expense.monthData}
+          />
+        ))}
+      </div>
     </MonthContainer>
   );
 };
@@ -35,47 +38,24 @@ const Month = ({ categoryId, monthId, monthName, expenses }) => {
 export default Month;
 
 const MonthContainer = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   margin: 1px;
-  height: 50px;
+  padding-top: 15px;
   width: 150px;
-  background-color: red;
+  min-height: 20px;
+  overflow: hidden;
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
 `;
 
-const Form = styled.form`
-  width: 30%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 35px;
-`;
-
-const Input = styled.input`
-  width: 100%;
-
-  margin: 5px;
-  padding: 5px;
-
-  border: 2px solid rgb(22, 38, 51);
-`;
-
-const ButtonSubmit = styled.input`
-  width: 80%;
-  border-radius: 5px;
-  background-color: #1753fc;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-`;
 const TriggerButton = styled.button`
+  position: absolute;
+  top: 1px;
+  right: 1px;
   width: 15px;
   height: 15px;
-  margin-right: 15px;
   background-color: transparent;
   border: none;
   font-size: 15px;
@@ -88,4 +68,12 @@ const TriggerButton = styled.button`
   &:focus {
     scale: 1.1;
   }
+`;
+
+const MonthName = styled.p`
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  
+  font-size: 10px;
 `;
