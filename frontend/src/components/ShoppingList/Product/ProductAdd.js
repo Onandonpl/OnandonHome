@@ -10,23 +10,23 @@ const ProductAdd = ({ listId, listColor }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const handleAddProduct = (data) => {
-    alert.show(`Dodano ${data.product}`);
-    addProduct(listId, data.product, listColor);
+    const productName = data.product;
+    addProduct(listId, productName, listColor);
+    alert.show(`Dodano ${productName}`);
+
     reset();
   };
 
   return (
-    <>
-      <Form onSubmit={handleSubmit(handleAddProduct)}>
-        <Input
-          type="text"
-          placeholder="Produkt"
-          name="product"
-          ref={register({ required: true, min: 1 })}
-        />
-        <ButtonSubmit type="submit" value="+" props={listColor} />
-      </Form>
-    </>
+    <Form onSubmit={handleSubmit(handleAddProduct)}>
+      <Input
+        type="text"
+        placeholder="Produkt"
+        name="product"
+        ref={register({ required: true, min: 1 })}
+      />
+      <ButtonSubmit type="submit" value="+" props={listColor} />
+    </Form>
   );
 };
 
