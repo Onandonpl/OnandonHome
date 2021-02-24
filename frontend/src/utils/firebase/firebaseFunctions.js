@@ -135,7 +135,9 @@ const addPlannedExpense = (
   plannedExpenseName,
   amount,
   created,
-  time
+  time,
+  mainCategory,
+  subCategory
 ) => {
   firestore
     .collection("plannedCategories")
@@ -146,8 +148,8 @@ const addPlannedExpense = (
       monthId,
       plannedExpenseName,
       type: "expense",
-      mainCategory: "Planowane",
-      subCategory: "Planowane",
+      mainCategory,
+      subCategory,
       amount,
       created,
       time,
