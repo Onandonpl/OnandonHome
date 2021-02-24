@@ -3,12 +3,13 @@ import styled from "styled-components/macro";
 import { AiOutlineHome, AiOutlineShoppingCart } from "react-icons/ai";
 import { BiMoney } from "react-icons/bi";
 import { FiSun } from "react-icons/fi";
+import { GiPayMoney } from "react-icons/gi";
+
 import { Link } from "react-router-dom";
 
 const Menu = ({ open, setOpen }) => {
   return (
     <StyledMenu open={open} onClick={setOpen}>
-
       <NavLink open={open} to="/">
         <AiOutlineHome />
         <LinktText>Home</LinktText>
@@ -18,7 +19,7 @@ const Menu = ({ open, setOpen }) => {
         <LinktText>Lista zakupów</LinktText>
       </NavLink>
       <NavLink open={open} to="/plannedexpenses">
-        <AiOutlineShoppingCart />
+        <GiPayMoney />
         <LinktText>Planowane wydatki</LinktText>
       </NavLink>
       <NavLink open={open} to="/expenses">
@@ -30,7 +31,6 @@ const Menu = ({ open, setOpen }) => {
         <FiSun />
         <LinktText>Pogoda</LinktText>
       </NavLink>
-      
     </StyledMenu>
   );
 };
