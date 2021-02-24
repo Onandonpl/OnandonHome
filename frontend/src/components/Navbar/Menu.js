@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import {
-  AiOutlineHome,
-  AiOutlineShoppingCart,
-} from "react-icons/ai";
+import { AiOutlineHome, AiOutlineShoppingCart } from "react-icons/ai";
 import { BiMoney } from "react-icons/bi";
 import { FiSun } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -11,27 +8,29 @@ import { Link } from "react-router-dom";
 const Menu = ({ open, setOpen }) => {
   return (
     <StyledMenu open={open} onClick={setOpen}>
-      <NavLink to="/">
+
+      <NavLink open={open} to="/">
         <AiOutlineHome />
         <LinktText>Home</LinktText>
       </NavLink>
-      <NavLink to="/shoppinglist">
+      <NavLink open={open} to="/shoppinglist">
         <AiOutlineShoppingCart />
         <LinktText>Lista zakupów</LinktText>
       </NavLink>
-      <NavLink to="/plannedexpenses">
+      <NavLink open={open} to="/plannedexpenses">
         <AiOutlineShoppingCart />
         <LinktText>Planowane wydatki</LinktText>
       </NavLink>
-      <NavLink to="/expenses">
+      <NavLink open={open} to="/expenses">
         <BiMoney />
         <LinktText>Wydatki</LinktText>
       </NavLink>
 
-      <NavLink to="/weather">
+      <NavLink open={open} to="/weather">
         <FiSun />
         <LinktText>Pogoda</LinktText>
       </NavLink>
+      
     </StyledMenu>
   );
 };
@@ -62,6 +61,7 @@ const StyledMenu = styled.nav`
 `;
 const NavLink = styled(Link)`
   width: 100%;
+  visibility: ${({ open }) => (open ? "visible" : "hidden")};
 
   margin: 15px 0;
 
