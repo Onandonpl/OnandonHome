@@ -90,6 +90,7 @@ const History = ({ transactionData }) => {
           trigger={
             <TriggerButton>
               <AiOutlinePlusCircle />
+              <p>Dodaj transakcje</p>
             </TriggerButton>
           }
           modal
@@ -99,7 +100,18 @@ const History = ({ transactionData }) => {
         <Popup
           trigger={
             <TriggerButton>
+              <GrAdd /> <p>Dodaj Kategorię</p>
+            </TriggerButton>
+          }
+          modal
+        >
+          <CategoryAdd />
+        </Popup>
+        <Popup
+          trigger={
+            <TriggerButton>
               <AiOutlineCalendar />
+              <p>Wybierz dzień</p>
             </TriggerButton>
           }
           modal
@@ -113,17 +125,8 @@ const History = ({ transactionData }) => {
         </Popup>
         <TriggerButton onClick={getAll}>
           <BsList />
+          <p>Pokaż wszystko</p>
         </TriggerButton>
-        <Popup
-          trigger={
-            <TriggerButton>
-              <GrAdd />
-            </TriggerButton>
-          }
-          modal
-        >
-          <CategoryAdd />
-        </Popup>
       </Menu>
 
       <TransactionList filteredByDate={filteredByDate} />
@@ -134,6 +137,7 @@ const History = ({ transactionData }) => {
 export default History;
 const HistoryContainer = styled.div`
   padding: 5px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -142,19 +146,34 @@ const HistoryContainer = styled.div`
 
 const Menu = styled.div`
   width: 100%;
+  height: 100%;
   padding: 5px;
+
+  display: flex;
+  flex-wrap: wrap;
+
   background-color: #f5f6f8;
 `;
 
 const TriggerButton = styled.button`
-  width: 15px;
-  height: 15px;
-  margin-right: 15px;
+  width: 100px;
+  margin: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: transparent;
   border: none;
-  font-size: 25px;
+
+  font-size: 30px;
   cursor: pointer;
+
   transition: linear 0.1s;
+
+  p {
+    font-size: 11px;
+  }
 
   &:hover {
     scale: 1.1;

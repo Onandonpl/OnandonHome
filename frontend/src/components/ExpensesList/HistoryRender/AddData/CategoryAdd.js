@@ -18,14 +18,14 @@ const CategoryAdd = () => {
 
   const handleAddMainCategory = (data) => {
     alert.show(`Dodano ${data.categoryName}`);
-  
+
     addCategory(data.categoryName, data.type, color);
     reset();
   };
 
   return (
     <Category>
-      Dodaj kategorie
+      <p>Dodaj kategorię</p>
       <Form onSubmit={handleSubmit(handleAddMainCategory)}>
         <Input
           type="text"
@@ -48,11 +48,15 @@ export default CategoryAdd;
 const Category = styled.div`
   padding: 5px;
 
-  background-color: #f1f1ff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background-color: #161523;
+  border-radius: 5px;
+
+  color: white;
 `;
 
 const Form = styled.form`
@@ -62,29 +66,32 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   font-size: 35px;
 `;
 
 const Input = styled.input`
   width: 100%;
-
   margin: 5px;
   padding: 5px;
 
   border: 2px solid rgb(22, 38, 51);
 `;
 const ButtonSubmitCategory = styled.input`
-  width: 80%;
-  border-radius: 5px;
+  width: 60%;
+  margin: 10px 0;
+
   background-color: #1753fc;
+
   border: none;
+  border-radius: 5px;
+
   color: white;
   font-size: 24px;
   cursor: pointer;
 `;
 const Select = styled.select`
   width: 100%;
-
   margin: 5px;
   padding: 5px;
 

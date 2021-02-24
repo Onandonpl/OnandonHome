@@ -51,7 +51,7 @@ const TransactionAdd = () => {
 
   return (
     <TransactionAddContainer>
-      Dodaj transakcje
+      <p>Dodaj transakcje </p>
       <Calendar value={value} onChange={onChange} />
       <Form onSubmit={handleSubmit(handleAddTransaction)}>
         <Input
@@ -85,11 +85,19 @@ const TransactionAdd = () => {
 export default TransactionAdd;
 const TransactionAddContainer = styled.div`
   padding: 5px;
-  background-color: #f1f1ff;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  background-color: #161523;
+
+  border-radius: 5px;
+
+  p {
+    color: white;
+  }
 `;
 
 const Form = styled.form`
@@ -122,10 +130,14 @@ const Select = styled.select`
 `;
 
 const ButtonSubmit = styled.input`
-  width: 80%;
-  border-radius: 5px;
+  width: 60%;
+  margin: 10px 0;
+
   background-color: #1753fc;
+
   border: none;
+  border-radius: 5px;
+
   color: white;
   font-size: 24px;
   cursor: pointer;
