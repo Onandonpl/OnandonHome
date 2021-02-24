@@ -79,12 +79,15 @@ const TransactionList = ({ filteredByDate }) => {
       <Menu>
         <TriggerButton onClick={filterByIncome} props={"green"}>
           <AiOutlineArrowUp />
+          <p>Przychody</p>
         </TriggerButton>
         <TriggerButton onClick={filterByExpense} props={"red"}>
           <AiOutlineArrowDown />
+          <p>Wydatki</p>
         </TriggerButton>
         <TriggerButton onClick={filterReset}>
           <BiRefresh />
+          <p>Zresetuj</p>
         </TriggerButton>
       </Menu>
       <Content>
@@ -103,19 +106,29 @@ export default TransactionList;
 const Container = styled.div`
   height: 100%;
   width: 100%;
-  background-color: #f5f6f8;
   padding: 5px;
+
+  background-color: #f5f6f8;
 `;
 const TriggerButton = styled.button`
-  width: 15px;
-  height: 15px;
-  margin-right: 15px;
+  margin: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: transparent;
   border: none;
+
   font-size: 25px;
   cursor: pointer;
-  transition: linear 0.1s;
   color: ${({ props }) => props};
+
+  transition: linear 0.1s;
+
+  p {
+    font-size: 11px;
+  }
   &:hover {
     scale: 1.1;
   }
@@ -123,10 +136,14 @@ const TriggerButton = styled.button`
     scale: 1.1;
   }
 `;
-const Menu = styled.div``;
+const Menu = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 const Content = styled.div``;
 const Chart = styled.div`
   margin: 5px;
+
   display: flex;
   justify-content: center;
   align-items: center;
