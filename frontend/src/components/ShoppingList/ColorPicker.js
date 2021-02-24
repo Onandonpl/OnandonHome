@@ -1,16 +1,8 @@
 import React from "react";
-import styled from "styled-components/macro";
+import { SketchPicker } from "react-color";
 
-import { HuePicker } from "react-color";
-const ColorPicker = ({ color, handleChange }) => {
-  return (
-    <Picker>
-      <HuePicker color={color} onChange={handleChange} />
-    </Picker>
-  );
+const ColorPicker = ({ color, handleChangeColor }) => {
+  return <SketchPicker color={color} onChange={handleChangeColor} />;
 };
 
 export default ColorPicker;
-const Picker = styled.div`
-  width: 100%;
-`;
