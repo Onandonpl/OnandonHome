@@ -19,7 +19,7 @@ const Expense = ({ filteredByType }) => {
   if (loading) return <> </>;
 
   const filteredByCategory = categories.docs.map((value) => value);
-  
+
   const mainCategoriesList = () => {
     const filtered = filteredByCategory.filter((value) =>
       value.data().categoryType === "mainCategory" ? value : null
@@ -46,7 +46,7 @@ const Expense = ({ filteredByType }) => {
           {mainCategoriesList()}
         </Select>
 
-        <ButtonSubmit type="submit" value="+" />
+        <ButtonSubmit type="submit" value="Wyświetl" />
       </Form>
       <Content>
         {filtered.map((value) => (
@@ -88,12 +88,15 @@ const Select = styled.select`
   border: 2px solid rgb(22, 38, 51);
 `;
 const ButtonSubmit = styled.input`
-  width: 200px;
-  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+
   background-color: #1753fc;
   border: none;
+  border-radius: 5px;
+  
   color: white;
-  font-size: 24px;
+  font-size: 15px;
   cursor: pointer;
 `;
 const Content = styled.div``;
