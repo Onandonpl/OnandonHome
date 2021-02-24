@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import "react-calendar/dist/Calendar.css";
 import { useForm } from "react-hook-form";
 import { useAlert } from "react-alert";
 import { AiOutlinePlusCircle } from "react-icons/ai";
@@ -23,7 +22,7 @@ const AddPlannedCategory = ({ date }) => {
     <Container open={open}>
       <CollapseButton onClick={() => setopen(!open)}>
         <AiOutlinePlusCircle />
-        <p> Dodaj Kategorię</p>
+        <p>Dodaj Kategorię</p>
       </CollapseButton>
 
       <Form open={open} onSubmit={handleSubmit(handleAddPlannedCategory)}>

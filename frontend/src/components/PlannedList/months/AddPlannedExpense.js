@@ -11,7 +11,7 @@ const AddPlannedExpense = ({ categoryId, monthId }) => {
   const alert = useAlert();
   const [value, onChange] = useState(new Date());
   const { register, handleSubmit, reset } = useForm();
-  console.log(value);
+
   const handleAddTransaction = (data) => {
     const timeWhenAdded = new Date().toLocaleString().split(",")[1];
     const convertAmount = parseInt(-data.amount);
@@ -26,7 +26,6 @@ const AddPlannedExpense = ({ categoryId, monthId }) => {
     );
 
     alert.show(`Dodano ${data.expense}`);
-
     reset();
   };
 
