@@ -31,8 +31,7 @@ const ListAdd = () => {
     <PopupModal
       trigger={
         <TriggerButton>
-          <p>Dodaj listę</p>
-          <AiFillFileAdd />
+          <AiFillFileAdd /> <p>Dodaj listę</p>
         </TriggerButton>
       }
       position="bottom center "
@@ -108,26 +107,21 @@ const ButtonSubmit = styled.input`
 `;
 
 const TriggerButton = styled.button`
-  width: 150px;
   position: fixed;
-  top: 0;
-  right: 10px;
+  top: 55px;
+  right: 0;
   z-index: 300;
-
-  width: 50px;
-  height: 50px;
-
+  margin-right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: transparent;
   border: none;
-  font-size: 40px;
+  font-size: 30px;
   cursor: pointer;
   transition: linear 0.1s;
   p {
-    font-size: 10px;
+    font-size: 15px;
   }
   &:hover {
     scale: 1.1;

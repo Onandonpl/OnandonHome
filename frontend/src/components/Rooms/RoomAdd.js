@@ -18,33 +18,32 @@ const RoomAdd = () => {
   };
 
   return (
-    <>
-      <PopupModal
-        trigger={
-          <TriggerButton>
-            <AiFillFileAdd />
-          </TriggerButton>
-        }
-        position="bottom center "
-      >
-        <Form onSubmit={handleSubmit(handleAddRoom)}>
-          <Title>Dodaj pomieszczenie</Title>
-          <Input
-            name="room"
-            type="text"
-            placeholder="Nazwa pomieszczenia"
-            ref={register({
-              required: "Pole nazwa pomieszczenia jest wymagane.",
-              pattern: {
-                message: "Błędna nazwa pomieszczenia.",
-              },
-            })}
-          />
-          <ButtonSubmit type="submit" value="Dodaj" />
-          {errors.room && <Error>{errors.room.message}</Error>}
-        </Form>
-      </PopupModal>
-    </>
+    <PopupModal
+      trigger={
+        <TriggerButton>
+          <AiFillFileAdd />
+          <p>Dodaj pomieszczenie</p>
+        </TriggerButton>
+      }
+      position="bottom center "
+    >
+      <Form onSubmit={handleSubmit(handleAddRoom)}>
+        <Title>Dodaj pomieszczenie</Title>
+        <Input
+          name="room"
+          type="text"
+          placeholder="Nazwa pomieszczenia"
+          ref={register({
+            required: "Pole nazwa pomieszczenia jest wymagane.",
+            pattern: {
+              message: "Błędna nazwa pomieszczenia.",
+            },
+          })}
+        />
+        <ButtonSubmit type="submit" value="Dodaj" />
+        {errors.room && <Error>{errors.room.message}</Error>}
+      </Form>
+    </PopupModal>
   );
 };
 
@@ -99,19 +98,21 @@ const ButtonSubmit = styled.input`
 
 const TriggerButton = styled.button`
   position: fixed;
-  top: 0;
-  right: 10px;
+  top: 55px;
+  right: 0;
   z-index: 300;
-
-  width: 50px;
-  height: 50px;
-
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: none;
-  font-size: 50px;
+  font-size: 30px;
   cursor: pointer;
   transition: linear 0.1s;
-
+  p {
+    font-size: 15px;
+  }
   &:hover {
     scale: 1.1;
   }

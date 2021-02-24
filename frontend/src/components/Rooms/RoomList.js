@@ -5,7 +5,7 @@ import { useCollection } from "react-firebase-hooks/firestore";
 import firebase from "../../config/firebase";
 import Loading from "../Animations/Loading";
 import Room from "./Room";
-
+import CC2531 from "../Devices/Device/CC2531/CC2531";
 const RoomList = () => {
   const [value, loading] = useCollection(
     firebase.firestore().collection("rooms").orderBy("created", "asc")
@@ -15,6 +15,7 @@ const RoomList = () => {
 
   return (
     <RoomListContainer>
+      <CC2531 />
       {value.docs.map((doc) => (
         <Room key={doc.id} roomId={doc.id} data={doc.data()}></Room>
       ))}
