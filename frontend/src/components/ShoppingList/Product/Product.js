@@ -14,10 +14,9 @@ import ProductFlags from "./ProductFlags";
 
 const Product = ({ data, listId, listColor }) => {
   const alert = useAlert();
-  
+
   const { name, checked, flag } = data.data();
 
-  const [fadeOut, setFadeOut] = useState(true);
   const [flagColor, setFlagColor] = useState(flag);
   const [isChecked, setIsChecked] = useState(checked);
 
@@ -31,14 +30,9 @@ const Product = ({ data, listId, listColor }) => {
     updateProductFlag(listId, data.id, e);
   };
 
-
   const handleDeleteProduct = () => {
+    deleteProduct(listId, data.id);
     alert.show(`Usunięto ${name}`);
-    setFadeOut(!fadeOut);
-    const timer = setTimeout(() => {
-      deleteProduct(listId, data.id);
-    }, 250);
-    return () => clearTimeout(timer);
   };
 
   return (
@@ -48,14 +42,11 @@ const Product = ({ data, listId, listColor }) => {
         <p>{name}</p>
       </ProductName>
       <ProductOptions>
-        <ProductFlags
-          listColor={listColor}
-          handleFlag={handleFlag}
-        />
-        <DeleteButton onClick={handleDeleteProduct}>
-          <AiFillDelete />
-        </DeleteButton>
+        <ProductFlags listColor={listColor} handleFlag={handleFlag} />
       </ProductOptions>
+      <DeleteButton onClick={handleDeleteProduct}>
+        <AiFillDelete />
+      </DeleteButton>
     </ProductContainer>
   );
 };
@@ -69,7 +60,7 @@ const ProductContainer = styled.div`
 
   padding: 15px;
   margin: 5px;
-  
+
   background-color: ${({ props }) => props};
   display: flex;
   align-items: center;
@@ -77,6 +68,9 @@ const ProductContainer = styled.div`
 `;
 
 const DeleteButton = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 5px;
   background-color: transparent;
   border: none;
   cursor: pointer;
