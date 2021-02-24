@@ -18,6 +18,11 @@ const Transaction = ({ transactionData }) => {
     mainCategory,
     subCategory,
   } = transactionData.transaction;
+
+  const formattedDate = new Date(
+    transactionData.transaction.created.seconds * 1000
+  ).toLocaleDateString();
+
   const [fadeOut, setFadeOut] = useState(true);
   const alert = useAlert();
 
@@ -50,7 +55,7 @@ const Transaction = ({ transactionData }) => {
         : alert.show(`Błędne dane`);
     }
   };
-  
+
   return (
     <TransactionContainer color={type}>
       <Main>
@@ -84,6 +89,7 @@ const Transaction = ({ transactionData }) => {
       <Category>
         <p>{mainCategory}</p>
         <p>{subCategory}</p>
+        <p>{formattedDate}</p>
       </Category>
     </TransactionContainer>
   );
@@ -93,19 +99,25 @@ export default Transaction;
 const TransactionContainer = styled.div`
   width: 100%;
   padding: 5px;
+  margin-bottom: 5px;
+
+  background-color: #f5f6f8;
+
   border-left: 5px solid
     ${({ color }) => (color === "income" ? "#2ea449" : "#d93542")};
-  background-color: #f5f6f8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
   display: flex;
   flex-direction: column;
-  margin-bottom: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;
+
 const TriggerButton = styled.button`
   background-color: transparent;
   border: none;
+
   font-size: 15px;
   cursor: pointer;
+
   transition: linear 0.1s;
 
   &:hover {
@@ -117,8 +129,9 @@ const TriggerButton = styled.button`
 `;
 const Menu = styled.div``;
 const Amount = styled.div`
-  display: flex;
   margin-left: 5px;
+  
+  display: flex;
 `;
 const Box = styled.div`
   display: flex;
