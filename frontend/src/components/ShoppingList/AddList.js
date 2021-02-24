@@ -39,8 +39,6 @@ const ListAdd = () => {
     >
       <Form onSubmit={handleSubmit(handleAddList)}>
         <FormTitle>Dodaj listę zakupów</FormTitle>
-        <ButtonSubmit type="submit" value="Dodaj" />
-        <ColorPicker color={color} handleChangeColor={handleChangeColor} />
         <Input
           type="text"
           placeholder="Nazwa Listy"
@@ -49,6 +47,9 @@ const ListAdd = () => {
             required: "Pole nazwa listy  jest wymagane.",
           })}
         />
+        <ColorPicker color={color} handleChangeColor={handleChangeColor} />
+        <ButtonSubmit type="submit" value="Dodaj" />
+
         {errors.listName && <Error>{errors.listName.message}</Error>}
       </Form>
     </PopupModal>
