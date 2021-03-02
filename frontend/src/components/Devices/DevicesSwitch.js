@@ -19,7 +19,7 @@ const renderSwitch = (doc, roomId) => {
           gosundPlug
         </GosundPlug>
       );
-    case "TS0505A" || "HG06106A":
+    case "TS0505A":
       return (
         <TS0505A
           key={id}
@@ -32,7 +32,19 @@ const renderSwitch = (doc, roomId) => {
           TS0505A/HG06106A
         </TS0505A>
       );
-
+    case "HG06106A":
+      return (
+        <TS0505A
+          key={id}
+          deviceId={id}
+          roomId={roomId}
+          devicename={name}
+          friendlyname={friendlyname}
+          type={type}
+        >
+          TS0505A/HG06106A
+        </TS0505A>
+      );
     case "WSDCGQ11LM":
       return (
         <WSDCGQ11LM

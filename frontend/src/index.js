@@ -7,10 +7,8 @@ import options from "./config/alertOptions";
 import AlertTemplate from "./components/AlertTemplate";
 
 ReactDOM.render(
-  <>
-    <AlertProvider template={AlertTemplate} {...options}>
-      <App />
-    </AlertProvider>
-  </>,
+  <AlertProvider template={AlertTemplate} {...options}>
+    <App />
+  </AlertProvider>,
   document.getElementById("root")
 );
