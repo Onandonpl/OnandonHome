@@ -1,2 +1,3 @@
 # OnandonHome
- Smart home dashboard with backend
+
+Smart home dashboard.
