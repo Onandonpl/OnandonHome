@@ -1,11 +1,15 @@
-import React from 'react'
-
+import React from "react";
+import { useWeather } from "../../context/WeatherContext";
+import { Container } from "./style";
+import WeatherList from "./components/WeatherList/WeatherList";
 const LocalWeather = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const weather = useWeather();
+  const { daily } = weather;
+  return (
+    <Container>
+      <WeatherList daily={daily} />
+    </Container>
+  );
+};
 
-export default LocalWeather
+export default LocalWeather;

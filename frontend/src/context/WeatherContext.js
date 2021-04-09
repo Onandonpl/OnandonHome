@@ -28,6 +28,7 @@ export const WeatherProvider = ({ children }) => {
     if (!loading) {
       fetchWeatherData();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [longitude, latitude]);
 
   return (
