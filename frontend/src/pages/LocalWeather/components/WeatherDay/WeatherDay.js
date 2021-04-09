@@ -11,7 +11,6 @@ import WindSpeed from "./WindSpeed";
 import WindDeg from "./WindDeg";
 import FeelsLike from "./FeelsLike";
 const WeatherDay = ({ day }) => {
-  console.log(day);
   const {
     dt,
     temp,
@@ -23,15 +22,22 @@ const WeatherDay = ({ day }) => {
     feels_like,
     humidity,
     pressure,
+    weather,
   } = day;
   const randomImage = Math.floor(Math.random() * (7 - 0 + 1) + 0);
+  const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+  
   return (
     <Container>
       <Basic>
         <Day time={dt} />
         <Temperature temperature={temp} />
+        <img src={icon} alt="weather icon" />
       </Basic>
-      <Img src={`/WeatherBackground/${randomImage}.jpg`}></Img>
+      <Img
+        src={`/WeatherBackground/${randomImage}.jpg`}
+        alt="weather backgorund"
+      ></Img>
       <Content>
         <div>
           <Sunset sunset={sunset} />
