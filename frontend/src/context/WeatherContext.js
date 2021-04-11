@@ -4,9 +4,16 @@ import { useSettings } from "./SettingsContext";
 const WeatherContext = createContext();
 
 export const WeatherProvider = ({ children }) => {
-  const [state, setState] = useState("loading");
+  const [state, setState] = useState({
+    weather: { current: [], daily: [], hourly: [] },
+    error: false,
+    loading: true,
+  });
+
   const settings = useSettings();
-  const { longitude, latitude, loading } = settings;
+  const { loading } = settings;
+  const { localization } = settings.settings;
+  const { longitude, latitude } = localization;
   const apiAddres = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&appid=${process.env.REACT_APP_WEATHER_API}`;
 
   const fetchWeatherData = async () => {
@@ -14,12 +21,20 @@ export const WeatherProvider = ({ children }) => {
     const data = await response.json();
 
     if (data.message) {
-      setState({ error: data.message });
+      setState({
+        weather: { current: [], daily: [], hourly: [] },
+        error: data.message,
+        loading: false,
+      });
     } else {
       setState({
-        current: data.current,
-        daily: data.daily,
-        hourly: data.hourly,
+        weather: {
+          current: data.current,
+          daily: data.daily,
+          hourly: data.hourly,
+        },
+        error: false,
+        loading: false,
       });
     }
   };
@@ -28,7 +43,7 @@ export const WeatherProvider = ({ children }) => {
     if (!loading) {
       fetchWeatherData();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [longitude, latitude]);
 
   return (
