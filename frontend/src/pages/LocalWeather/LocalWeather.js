@@ -3,7 +3,7 @@ import { useWeather } from "../../context/WeatherContext";
 import { Container } from "./style";
 import WeatherList from "./components/WeatherList/WeatherList";
 import WeatherError from "./components/WeatherError/WeatherError";
-import WeatherLoading from "./components/WeatherLoading/WeatherLoading";
+import Loading from "components/Loading/Loading";
 
 const LocalWeather = () => {
   const weather = useWeather();
@@ -14,7 +14,7 @@ const LocalWeather = () => {
   }
   return (
     <Container>
-      {loading ? <WeatherLoading /> : <WeatherList daily={daily} />}
+      {loading ? <Loading /> : <WeatherList daily={daily} />}
     </Container>
   );
 };
