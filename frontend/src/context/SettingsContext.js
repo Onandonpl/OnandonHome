@@ -17,7 +17,7 @@ export const SettingsProvider = ({ children }) => {
       dispatch({ type: "SET_SETTINGS", payload: settings });
     }
   }, [value]);
-
+  
   return (
     <SettingsDispatchContext.Provider value={dispatch}>
       <SettingsContext.Provider value={state}>
