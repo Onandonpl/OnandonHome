@@ -1,33 +1,32 @@
-import { db } from "../lib/firebase";
+import { handleChangeSetting } from "./settingsAction";
 
-const settings = {
-  menu: true,
-  longitude: 18.638306,
-  latitude: 54.372158,
-  loading: true,
-};
-
-const handleVisable = (data) => {
-  db.collection("settings").doc("settings").update({ menu: data });
-};
-const handleLocalization = (data) => {
-  db.collection("settings").doc("settings").update(data);
-};
 export const settingsReducer = (state, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case "SET_SETTINGS":
-      return { ...action.payload, loading: false };
+      return { settings: payload, loading: false };
     case "SET_VISABLE":
-      handleVisable(action.payload.menu);
+      handleChangeSetting(payload);
       return state;
     case "SET_LOCALIZATION":
-      handleLocalization(action.payload);
+      handleChangeSetting(payload);
       return state;
     default:
-      throw new Error(`Unknown action ${action.type}`);
+      throw new Error(`Unknown action ${type}`);
   }
 };
 
+const settings = {
+  settings: {
+    menu: true,
+    localization: {
+      longitude: 18.638306,
+      latitude: 54.372158,
+    },
+  },
+  loading: true,
+};
 export const initialState = () => {
   return settings;
 };
