@@ -7,7 +7,9 @@ const MenuVisable = ({ menu, dispatch }) => {
   const alert = useAlert();
 
   const handleChange = () => {
-    dispatch({ type: "SET_VISABLE", payload: { menu: !menu } });
+    const payload = { menu: !menu };
+
+    dispatch({ type: "SET_VISABLE", payload: payload });
     alert.show("Zmieniono ustawienia menu.");
   };
 

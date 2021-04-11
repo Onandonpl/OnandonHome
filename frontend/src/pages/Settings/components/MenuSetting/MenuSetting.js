@@ -1,14 +1,8 @@
 import React from "react";
 import { Container, Title, Description } from "./style";
 import MenuVisable from "./MenuVisable";
-import {
-  useDispatchSettings,
-  useSettings,
-} from "../../../../context/SettingsContext";
-const MenuSetting = () => {
-  const settings = useSettings();
-  const dispatch = useDispatchSettings();
-  const { menu } = settings;
+
+const MenuSetting = ({ dispatch, menu }) => {
   return (
     <Container>
       <Title>Menu</Title>
