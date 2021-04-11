@@ -2,12 +2,19 @@ import React from "react";
 import { useWeather } from "../../context/WeatherContext";
 import { Container } from "./style";
 import WeatherList from "./components/WeatherList/WeatherList";
+import WeatherError from "./components/WeatherError/WeatherError";
+import WeatherLoading from "./components/WeatherLoading/WeatherLoading";
+
 const LocalWeather = () => {
   const weather = useWeather();
-  const { daily } = weather;
+  const { daily } = weather.weather;
+  const { error, loading } = weather;
+  if (error) {
+    return <WeatherError message={weather.error} />;
+  }
   return (
     <Container>
-      <WeatherList daily={daily} />
+      {loading ? <WeatherLoading /> : <WeatherList daily={daily} />}
     </Container>
   );
 };
