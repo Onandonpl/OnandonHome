@@ -9,10 +9,11 @@ import HideRevealButton from "./components/HideRevealButton/HideRevealButton";
 const NavBar = () => {
   const settings = useSettings();
   const [hide, setHide] = useState(false);
-
+  const { menu } = settings.settings;
+  
   useEffect(() => {
-    setHide(settings.menu);
-  }, [settings.menu]);
+    setHide(menu);
+  }, [menu]);
 
   const handleHide = () => {
     setHide(!hide);
