@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import {
   AllDevices,
   ExpensePlanned,
-  ExpenseTracker,
+  Budget,
   Home,
   LocalWeather,
   Settings,
@@ -17,7 +17,7 @@ const Routes = () => {
       <Route exact path="/" component={Home}></Route>
       <Route exact path="/devices" component={AllDevices}></Route>
       <Route exact path="/planned" component={ExpensePlanned}></Route>
-      <Route exact path="/tracker" component={ExpenseTracker}></Route>
+      <Route exact path="/budget" component={Budget}></Route>
       <Route exact path="/weather" component={LocalWeather}></Route>
       <Route exact path="/settings" component={Settings}></Route>
       <Route exact path="/shopping" component={ShoppingList}></Route>
