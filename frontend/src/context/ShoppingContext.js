@@ -8,20 +8,20 @@ const ShoppingContext = createContext();
 const ShoppingDispatchContext = createContext();
 
 export const ShoppingProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(shoppingReducer, initialState());
+  const [state, dispatch] = useReducer(shoppingReducer, initialState);
   const [value] = useCollection(
-    db.collection("shopping").orderBy("created", "asc")
+    db.collection("shopping").orderBy("created", "desc")
   );
 
   useEffect(() => {
     if (value) {
-      const shoppingList = value.docs.map((val) => {
-        return { shoppingItem: val.data(), shoppingItemId: val.id };
+      const itemList = value.docs.map((value) => {
+        return { item: value.data(), itemId: value.id };
       });
-      dispatch({ type: "SET_SHOPPING", payload: shoppingList });
+      dispatch({ type: "SET_ITEMS", payload: itemList });
     }
   }, [value]);
-  
+
   return (
     <ShoppingDispatchContext.Provider value={dispatch}>
       <ShoppingContext.Provider value={state}>
