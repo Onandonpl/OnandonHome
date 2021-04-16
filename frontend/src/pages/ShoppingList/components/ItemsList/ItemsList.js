@@ -1,19 +1,15 @@
 import React from "react";
 import { Container } from "./style";
-import Item from "../Item/Item";
-import Loading from "components/Loading/Loading";
 import { useShopping } from "context/ShoppingContext";
+import ItemsContainer from "../ItemsContainer/ItemsContainer";
+
 const ItemsList = () => {
   const shopping = useShopping();
-  const { shoppingList, loading } = shopping;
+  const { loading } = shopping;
 
-  const renderList = () => {
-    return shoppingList.map((item) => {
-      return <Item key={item.shoppingItemId} item={item} />;
-    });
-  };
-
-  return <Container>{loading ? <Loading /> : renderList()}</Container>;
+  return (
+    <Container>{loading ? <div>loading</div> : <ItemsContainer />}</Container>
+  );
 };
 
 export default ItemsList;

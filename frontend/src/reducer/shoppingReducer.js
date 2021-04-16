@@ -6,9 +6,10 @@ import {
 
 export const shoppingReducer = (state, action) => {
   const { type, payload } = action;
+
   switch (type) {
-    case "SET_SHOPPING":
-      return { shoppingList: payload, loading: false };
+    case "SET_ITEMS":
+      return { itemList: payload, loading: false };
     case "ADD_ITEM":
       handleAddItem(payload);
       return state;
@@ -26,8 +27,4 @@ export const shoppingReducer = (state, action) => {
   }
 };
 
-const shopping = { shoppingList: [], loading: true };
-
-export const initialState = () => {
-  return shopping;
-};
+export const initialState = { itemList: [], loading: true };

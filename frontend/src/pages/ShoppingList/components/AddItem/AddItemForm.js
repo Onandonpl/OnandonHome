@@ -1,10 +1,14 @@
 import React from "react";
-import { useForm } from "react-hook-form";
-import { useAlert } from "react-alert";
+
 import { Input, InputContainer, FormError, Form, Submit } from "./style";
 import { useDispatchShopping } from "context/ShoppingContext";
-const AddForm = () => {
+
+import { useForm } from "react-hook-form";
+import { useAlert } from "react-alert";
+
+const AddItemForm = () => {
   const dispatch = useDispatchShopping();
+
   const alert = useAlert();
   const {
     register,
@@ -44,4 +48,4 @@ const AddForm = () => {
   );
 };
 
-export default AddForm;
+export default AddItemForm;

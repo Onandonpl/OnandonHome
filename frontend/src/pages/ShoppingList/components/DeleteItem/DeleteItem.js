@@ -1,19 +1,21 @@
 import React from "react";
-import { useAlert } from "react-alert";
-
-import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "./style";
 
-const DeleteItem = ({ dispatch, shoppingItemId }) => {
+import { useDispatchShopping } from "context/ShoppingContext";
+
+import { useAlert } from "react-alert";
+import { AiOutlineClose } from "react-icons/ai";
+
+const DeleteItem = ({ itemId }) => {
   const alert = useAlert();
+  const dispatch = useDispatchShopping();
 
   const handleDeleteItem = () => {
-    const payload = {
-      shoppingItemId: shoppingItemId,
-    };
+    const payload = itemId;
     dispatch({ type: "DELETE_ITEM", payload: payload });
-    alert.show("Usunięto przedmiot.");
+    alert.show("Usunięto produkt.");
   };
+
   return (
     <Button onClick={handleDeleteItem}>
       <AiOutlineClose />

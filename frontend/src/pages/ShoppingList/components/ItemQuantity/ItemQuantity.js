@@ -1,17 +1,24 @@
 import React from "react";
-import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
 import { QuantityContainer, Button, Operations, Summary } from "./style";
-const ItemQuantity = ({ dispatch, qty, shoppingItemId }) => {
+
+import { useDispatchShopping } from "context/ShoppingContext";
+
+import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
+
+const ItemQuantity = ({ qty, itemId }) => {
+  const dispatch = useDispatchShopping();
+
   const handleIncreaseQtyItem = () => {
     dispatch({
       type: "INCREASE_ITEM",
-      payload: { shoppingItemId: shoppingItemId, qty: qty + 1 },
+      payload: { itemId: itemId, qty: qty + 1 },
     });
   };
+
   const handleDecreaseQtyItem = () => {
     dispatch({
       type: "INCREASE_ITEM",
-      payload: { shoppingItemId: shoppingItemId, qty: qty - 1 },
+      payload: { itemId: itemId, qty: qty - 1 },
     });
   };
 
@@ -21,7 +28,9 @@ const ItemQuantity = ({ dispatch, qty, shoppingItemId }) => {
         <Button onClick={handleDecreaseQtyItem}>
           <BsArrowLeftShort />
         </Button>
+
         <Summary>{qty}</Summary>
+
         <Button onClick={handleIncreaseQtyItem}>
           <BsArrowRightShort />
         </Button>

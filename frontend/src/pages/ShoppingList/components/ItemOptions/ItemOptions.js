@@ -1,11 +1,12 @@
 import React from "react";
-
 import { OptionsContainer } from "./style";
+
 import DeleteItem from "../DeleteItem/DeleteItem";
-const ItemOptions = ({ dispatch, shoppingItemId }) => {
+
+const ItemOptions = ({ itemId }) => {
   return (
     <OptionsContainer>
-      <DeleteItem dispatch={dispatch} shoppingItemId={shoppingItemId} />
+      <DeleteItem itemId={itemId} />
     </OptionsContainer>
   );
 };

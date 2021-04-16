@@ -1,22 +1,17 @@
 import React from "react";
 import { Container, ProductName } from "./style";
+
 import ItemQuantity from "../ItemQuantity/ItemQuantity";
 import ItemOptions from "../ItemOptions/ItemOptions";
 
-import { useDispatchShopping } from "context/ShoppingContext";
-const Item = ({ item }) => {
-  const dispatch = useDispatchShopping();
-  const { shoppingItem, shoppingItemId } = item;
-  const { name, qty } = shoppingItem;
+const Item = ({ data }) => {
+  const { item, itemId } = data;
+  const { name, qty } = item;
   return (
     <Container>
       <ProductName>{name}</ProductName>
-      <ItemQuantity
-        dispatch={dispatch}
-        qty={qty}
-        shoppingItemId={shoppingItemId}
-      />
-      <ItemOptions dispatch={dispatch} shoppingItemId={shoppingItemId} />
+      <ItemQuantity qty={qty} itemId={itemId} />
+      <ItemOptions itemId={itemId} />
     </Container>
   );
 };

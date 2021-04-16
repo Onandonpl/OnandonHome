@@ -7,11 +7,10 @@ export const handleAddItem = (data) => {
   });
 };
 export const handleDeleteItem = (data) => {
-  const { shoppingItemId } = data;
-  db.collection("shopping").doc(shoppingItemId).delete();
+  db.collection("shopping").doc(data).delete();
 };
 
 export const handleQtyItem = (data) => {
-  const { shoppingItemId, qty } = data;
-  db.collection("shopping").doc(shoppingItemId).update({ qty: qty });
+  const { itemId, qty } = data;
+  db.collection("shopping").doc(itemId).update({ qty: qty });
 };
