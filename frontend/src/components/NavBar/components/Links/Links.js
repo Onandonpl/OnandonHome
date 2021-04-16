@@ -17,7 +17,7 @@ const Links = () => {
         text={"Planowane wydatki"}
         icon={<AiFillPieChart />}
       />
-      <MenuLink link={"/tracker"} text={"Budżet"} icon={<BiNote />} />
+      <MenuLink link={"/budget"} text={"Budżet"} icon={<BiNote />} />
       <MenuLink
         link={"/shopping"}
         text={"Lista zakupów"}
