@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "./style";
 import MenuSetting from "../MenuSetting/MenuSetting";
 import WeatherSetting from "../LocalizationSetting/LocalizationSetting";
+import BudgetSetting from "../BudgetSetting/BudgetSetting";
 import {
   useDispatchSettings,
   useSettings,
@@ -15,6 +16,7 @@ const SettingsList = () => {
     <Container>
       <MenuSetting dispatch={dispatch} menu={menu} />
       <WeatherSetting dispatch={dispatch} localization={localization} />
+      <BudgetSetting dispatch={dispatch} />
     </Container>
   );
 };

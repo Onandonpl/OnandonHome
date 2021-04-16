@@ -9,8 +9,7 @@ import {
   FormContainer,
   Select,
 } from "./style";
-import { useDispatchBudget } from "context/BudgetContext";
-
+import { useDispatchBudget, useBudget } from "context/BudgetContext";
 import { useForm } from "react-hook-form";
 import { useAlert } from "react-alert";
 import Calendar from "react-calendar";
@@ -19,6 +18,8 @@ const AddItemForm = () => {
   const [value, onChange] = useState(new Date());
 
   const dispatch = useDispatchBudget();
+  const budget = useBudget();
+  const { budgetCategories } = budget;
 
   const alert = useAlert();
   const {
@@ -48,7 +49,14 @@ const AddItemForm = () => {
     reset();
     alert.show("Dodano transakcje.");
   };
-
+  const renderBudgetCategories = budgetCategories.map((item) => {
+    const { budgetCategoryName } = item;
+    return (
+      <option key={budgetCategoryName} value={budgetCategoryName}>
+        {budgetCategoryName}
+      </option>
+    );
+  });
   return (
     <FormContainer>
       <Calendar value={value} onChange={onChange} />
@@ -75,10 +83,7 @@ const AddItemForm = () => {
           <option value="expense">Wydatek</option>
         </Select>
         <Select name="category" {...register("category")}>
-          <option value="woda">Woda</option>
-          <option value="prąd">Prąd</option>
-          <option value="gaz">Gaz</option>
-          <option value="gaz">Wypłata</option>
+          {renderBudgetCategories}
         </Select>
         <Submit type="submit">Dodaj</Submit>
       </Form>

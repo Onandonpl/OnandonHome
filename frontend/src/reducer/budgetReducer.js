@@ -5,7 +5,12 @@ export const budgetReducer = (state, action) => {
 
   switch (type) {
     case "SET_ITEMS":
-      return { itemList: payload, filter: payload, loading: false };
+      return {
+        itemList: payload.itemList,
+        filter: payload.itemList,
+        budgetCategories: payload.budgetCategories,
+        loading: false,
+      };
 
     case "SHOW_ALL":
       return { ...state, filter: [...state.itemList] };
@@ -32,4 +37,9 @@ export const budgetReducer = (state, action) => {
   }
 };
 
-export const initialState = { itemList: [], filter: [], loading: true };
+export const initialState = {
+  itemList: [],
+  filter: [],
+  budgetCategories: [],
+  loading: true,
+};

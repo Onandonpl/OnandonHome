@@ -1,4 +1,4 @@
-import { handleChangeSetting } from "./settingsAction";
+import { handleChangeSetting, handleAddBudgetCategory } from "./settingsAction";
 
 export const settingsReducer = (state, action) => {
   const { type, payload } = action;
@@ -11,6 +11,9 @@ export const settingsReducer = (state, action) => {
       return state;
     case "SET_LOCALIZATION":
       handleChangeSetting(payload);
+      return state;
+    case "ADD_BUDGET_CATEGORY":
+      handleAddBudgetCategory(payload);
       return state;
     default:
       throw new Error(`Unknown action ${type}`);

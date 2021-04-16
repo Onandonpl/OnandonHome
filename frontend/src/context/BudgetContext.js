@@ -12,16 +12,26 @@ export const BudgetProvider = ({ children }) => {
   const [value] = useCollection(
     db.collection("budget").orderBy("created", "desc")
   );
+  const [budgetCategoriesValue] = useCollection(
+    db.collection("budgetCategories")
+  );
 
   useEffect(() => {
-    if (value) {
+    if (value && budgetCategoriesValue) {
       const itemList = value.docs.map((value) => {
         return { item: value.data(), itemId: value.id };
       });
-      dispatch({ type: "SET_ITEMS", payload: itemList });
-    }
-  }, [value]);
 
+      const budgetCategories = budgetCategoriesValue.docs.map((value) => {
+        return value.data();
+      });
+
+      dispatch({
+        type: "SET_ITEMS",
+        payload: { itemList: itemList, budgetCategories: budgetCategories },
+      });
+    }
+  }, [value, budgetCategoriesValue]);
   return (
     <BudgetDispatchContext.Provider value={dispatch}>
       <BudgetContext.Provider value={state}>{children}</BudgetContext.Provider>
