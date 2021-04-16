@@ -14,6 +14,7 @@ export const Title = styled.p`
   font-size: 25px;
 `;
 export const Description = styled.p`
+  margin-bottom: 5px;
   font-size: 10px;
 `;
 
@@ -62,6 +63,7 @@ export const Submit = styled.button`
 `;
 
 export const Label = styled.label`
+  margin-top: 5px;
   font-size: 12px;
 `;
 export const FormError = styled.p`
