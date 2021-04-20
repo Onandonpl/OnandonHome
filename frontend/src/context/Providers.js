@@ -3,12 +3,18 @@ import { SettingsProvider } from "./SettingsContext";
 import { WeatherProvider } from "./WeatherContext";
 import { ShoppingProvider } from "./ShoppingContext";
 import { BudgetProvider } from "./BudgetContext";
+import { DevicesProvider } from "./DevicesContext";
+import { HomeDevicesProvider } from "./HomeDevicesContext";
 const Providers = ({ children }) => {
   return (
     <SettingsProvider>
       <WeatherProvider>
         <ShoppingProvider>
-          <BudgetProvider> {children}</BudgetProvider>
+          <BudgetProvider>
+            <DevicesProvider>
+              <HomeDevicesProvider>{children}</HomeDevicesProvider>
+            </DevicesProvider>
+          </BudgetProvider>
         </ShoppingProvider>
       </WeatherProvider>
     </SettingsProvider>
